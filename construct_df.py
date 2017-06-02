@@ -1,9 +1,11 @@
 import pandas as pd 
+import sys
 
 
 
 if __name__ == "__main__":
-	sent_df = pd.read_csv("joined2.csv")
+	input_file = sys.argv[1]
+	sent_df = pd.read_csv(input_file)
 	ind_df = pd.read_csv("trans_sent_num.csv", encoding = "ISO-8859-1")
 	ind_df = ind_df.rename(columns = {'name':'ID'})
 	abuse_df = pd.DataFrame(columns = ['ID', 'abuse'])
@@ -29,4 +31,4 @@ if __name__ == "__main__":
 
 	final_df = pd.merge(full, result_df, on=['ID'] )
 
-	final_df.to_csv('final_data.csv')
+	final_df.to_csv('QTA_final_data.csv')
